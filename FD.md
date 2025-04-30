@@ -201,3 +201,69 @@ Where:
 - **Short fragments**: SmartExpander ensures fragments are meaningful by avoiding very short splits
 - **Punctuation handling**: Added punctuation to fragments as needed to maintain proper sentence structure
 - **Dynamic adverb detection**: Captures adverbs through pattern matching rather than requiring an exhaustive list 
+
+## Recent Updates and Enhancements
+
+### System Components
+
+The Fragment Detector system now consists of three main components:
+
+1. **fd_linguistic_features.py** - New shared module containing word lists, regex patterns, and feature descriptions
+2. **fd_dataset_creator_script.py** - Original script enhanced with new verb pattern recognition
+3. **fd_ds_expander.py** - New script to expand datasets with linguistic feature columns 
+
+### Enhanced Linguistic Pattern Recognition
+
+The SmartExpander functionality has been extended with additional linguistic patterns:
+
+1. **Past Verb Patterns** - Regular and irregular past tense verbs
+   - Words ending with `-ed` or `-en` with at least 3 letters
+   - Example: In "He walked to the store", "walked" is detected as a past verb
+
+2. **Gerund Patterns** - Present participles ending with `-ing`
+   - Words ending with `-ing` with at least 3 letters
+   - Example: In "Running daily is healthy", "running" is detected as a gerund
+
+3. **Special Pattern: Auxiliary + Gerund**
+   - Detects auxiliary verbs followed immediately by gerunds (continuous tenses)
+   - Example: In "Amr is playing football", it can split after "is" or at "playing"
+   - This improves fragmentation of sentences with continuous verbs
+
+### Example 5: Enhanced Verb Pattern Recognition
+
+**Input Non-Fragment:**
+```
+Amr is playing football with his friends.
+```
+
+**Intelligent Splitting Process with New Patterns:**
+1. `SmartExpander` now identifies `is` (auxiliary verb) followed by `playing` (gerund)
+2. Special auxiliary+gerund handling prioritizes splitting at the gerund
+3. Creates two fragments with proper punctuation
+
+**Output (New Fragments):**
+
+| Sentence Fragment | is_fragment |
+|-------------------|-------------|
+| Amr is. | True |
+| Playing football with his friends. | True |
+
+### New Feature Extraction Functionality
+
+The new `fd_ds_expander.py` script adds linguistic feature columns to datasets:
+
+```bash
+python fd_ds_expander.py --input fragments.csv --output expanded_fragments.csv
+```
+
+Adds 18 linguistic feature columns including:
+- **has_past_verb** - Contains past tense verbs (words ending with -ed or -en)
+- **has_gerund** - Contains gerunds/present participles (words ending with -ing)
+- **has_auxiliary**, **has_fullstop**, **has_conjunction**, and many more
+
+### Code Organization Improvements
+
+- Extracted common patterns and word lists to `fd_linguistic_features.py`
+- Removed redundant `all_caps_word` feature 
+- Standardized feature extraction and processing across scripts
+- Added proper type hints and docstrings 
