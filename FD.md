@@ -72,6 +72,8 @@ The `SmartExpander` class analyzes sentences for optimal split points based on l
    - Fallback to middle-word splitting if no linguistic cues are found
    - Both fragments are marked as `is_fragment = True`
 
+...
+
 ### 4. Output
 
 The final output contains two columns:
@@ -102,9 +104,9 @@ Raymond Stewart commented "Why isn't everyone talking about Daybreak? it breaks 
 
 **Output:**
 
-| Sentence Fragment | is_fragment |
-|-------------------|-------------|
-| Why isn't everyone talking about Daybreak? | False |
+| Sentence Fragment                          | is_fragment |
+|--------------------------------------------|-------------|
+| Why isn't everyone talking about Daybreak? | False       |
 
 ### Example 2: Sentence with commas
 
@@ -120,12 +122,12 @@ Jane Doe commented "Coffee, tea, or juice, that is the question" on 2022-03-15 0
 
 **Output:**
 
-| Sentence Fragment | is_fragment |
-|-------------------|-------------|
-| Coffee | True |
-| tea | True |
-| or juice | True |
-| that is the question | True |
+| Sentence Fragment    | is_fragment |
+|----------------------|-------------|
+| Coffee               | True        |
+| tea                  | True        |
+| or juice             | True        |
+| that is the question | True        |
 
 ### Example 3: Balancing with SmartExpander
 
@@ -141,10 +143,10 @@ The graphics are breathtaking but the plot could be better.
 
 **Output (New Fragments):**
 
-| Sentence Fragment | is_fragment |
-|-------------------|-------------|
-| The graphics are breathtaking. | True |
-| But the plot could be better. | True |
+| Sentence Fragment              | is_fragment |
+|--------------------------------|-------------|
+| The graphics are breathtaking. | True        |
+| But the plot could be better.  | True        |
 
 ### Example 4: Regex-based Adverb Detection
 
@@ -160,10 +162,10 @@ The actor performed brilliantly despite the weak script.
 
 **Output (New Fragments):**
 
-| Sentence Fragment | is_fragment |
-|-------------------|-------------|
-| The actor performed. | True |
-| Brilliantly despite the weak script. | True |
+| Sentence Fragment                    | is_fragment |
+|--------------------------------------|-------------|
+| The actor performed.                 | True        |
+| Brilliantly despite the weak script. | True        |
 
 ## Usage
 
@@ -269,10 +271,10 @@ Amr is playing football with his friends.
 
 **Output (New Fragments):**
 
-| Sentence Fragment | is_fragment |
-|-------------------|-------------|
-| Amr is. | True |
-| Playing football with his friends. | True |
+| Sentence Fragment                  | is_fragment |
+|------------------------------------|-------------|
+| Amr is.                            | True        |
+| Playing football with his friends. | True        |
 
 ### Feature Extraction Functionality (`fd_ds_expander.py`)
 
