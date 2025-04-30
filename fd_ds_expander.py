@@ -114,8 +114,8 @@ def expand_dataset(input_file: str, output_file: str) -> None:
         info(f"Reading input file: {input_file}")
         df = pd.read_csv(input_file)
         
-        if 'Sentence' not in df.columns:
-            error(f"Input file must contain a 'Sentence' column.")
+        if 'Sentence Fragment' not in df.columns:
+            error(f"Input file must contain a 'Sentence Fragment' column.")
             return
         
         # Create a feature extractor
@@ -148,7 +148,7 @@ def expand_dataset(input_file: str, output_file: str) -> None:
         # Process sentences with a progress bar
         for _, row in tqdm(df.iterrows(), total=len(df), desc="Processing sentences"):
             # Get and preprocess the sentence
-            sentence = row['Sentence']
+            sentence = row['Sentence Fragment']
             processed_sentence = preprocess_sentence(sentence)
             
             # Extract features
