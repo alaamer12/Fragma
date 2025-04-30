@@ -206,11 +206,37 @@ Where:
 
 ### System Components
 
-The Fragment Detector system now consists of three main components:
+The Fragment Detector system now consists of four main components:
 
-1. **fd_linguistic_features.py** - New shared module containing word lists, regex patterns, and feature descriptions
-2. **fd_dataset_creator_script.py** - Original script enhanced with new verb pattern recognition
-3. **fd_ds_expander.py** - New script to expand datasets with linguistic feature columns 
+1. **fd_linguistic_features.py** - Shared module containing word lists, regex patterns, and feature descriptions.
+2. **preprocessor.py** - *New*: Standardizes and cleans raw text using classic NLP techniques before further processing.
+3. **fd_dataset_creator_script.py** - Original script enhanced, now benefits from upstream preprocessing.
+4. **fd_ds_expander.py** - Script to expand datasets with linguistic features, also benefits from preprocessing.
+
+### New: NLP Preprocessing Pipeline (`preprocessor.py`)
+
+Before any fragment extraction or feature analysis, raw input sentences are now processed through a dedicated NLP preprocessing pipeline defined in `preprocessor.py`. This ensures consistency and improves the quality of data fed into downstream components.
+
+The pipeline includes the following configurable steps:
+
+1.  **Strip Platform Noise**: Removes patterns like `"User123 commented"` and `"on <date> on <platform>."`. (Based on previous `preprocess_sentence` logic).
+2.  **Fix Broken Unicode**: Corrects common encoding errors (e.g., `Ã©` → `é`).
+3.  **Remove Invalid Characters**: Strips HTML entities (`&nbsp;`), control characters (`\x00`), and unnecessary escape sequences.
+4.  **Remove Emojis and Emoticons**: Uses the `emoji` library and regex to remove visual emojis (😂) and text emoticons (e.g., `:D`, `;-)`).
+5.  **Lowercase Text**: Converts all text to lowercase for consistency.
+6.  **Expand Contractions**: Converts forms like `"I'm"` to `"I am"`, `"won't"` to `"will not"` (Requires optional `contractions` library).
+7.  **Normalize Unusual Word Forms**: Fixes specific artifacts like `"foot_ball"` → `"football"` or `"e-mail"` → `"email"`.
+8.  **Normalize Punctuation**: Converts curly quotes (`""''`) to standard ones (`"'`), collapses repeated punctuation (`...` → `.`, `!!` → `!`), and fixes spacing around punctuation.
+9.  **Normalize Whitespace**: Collapses multiple spaces, tabs, or newlines into a single space and trims leading/trailing whitespace.
+
+**Optional Steps (Configurable):**
+
+10. **Remove Stopwords**: Removes common function words like "the", "is", "in" (Uses NLTK).
+11. **Tokenize Text**: Splits the cleaned text into individual words or tokens (Uses NLTK).
+12. **Lemmatize Tokens**: Reduces words to their base or dictionary form (e.g., "running" → "run", "ran" → "run") (Uses NLTK WordNet).
+13. **Correct Spelling**: Attempts to fix spelling errors (Requires optional `textblob` library; can be slow).
+
+The order of operations is designed to handle dependencies (e.g., lowercasing before stopword removal).
 
 ### Enhanced Linguistic Pattern Recognition
 
@@ -248,12 +274,16 @@ Amr is playing football with his friends.
 | Amr is. | True |
 | Playing football with his friends. | True |
 
-### New Feature Extraction Functionality
+### Feature Extraction Functionality (`fd_ds_expander.py`)
 
-The new `fd_ds_expander.py` script adds linguistic feature columns to datasets:
+The `fd_ds_expander.py` script adds linguistic feature columns to datasets after they have been preprocessed:
 
 ```bash
-python fd_ds_expander.py --input fragments.csv --output expanded_fragments.csv
+# First, preprocess the raw data (example)
+# python preprocessor_script.py raw_input.csv preprocessed_output.csv
+
+# Then, expand the preprocessed data with features
+python fd_ds_expander.py --input preprocessed_output.csv --output expanded_features.csv
 ```
 
 Adds 18 linguistic feature columns including:
@@ -263,7 +293,8 @@ Adds 18 linguistic feature columns including:
 
 ### Code Organization Improvements
 
-- Extracted common patterns and word lists to `fd_linguistic_features.py`
-- Removed redundant `all_caps_word` feature 
-- Standardized feature extraction and processing across scripts
-- Added proper type hints and docstrings 
+- Extracted common patterns and word lists to `fd_linguistic_features.py`.
+- Introduced `preprocessor.py` for standardized text cleaning.
+- Removed redundant `all_caps_word` feature.
+- Standardized feature extraction and processing across scripts.
+- Added proper type hints and docstrings. 
