@@ -1,0 +1,207 @@
+prompt: `# 🧠 AI Prompt: IPython Notebook Markdown Generator
+
+You are generating a clean, professional markdown header for an IPython notebook that is part of a structured project.  
+Before proceeding, you must collect the following information from the user to populate each section of the notebook markdown template accurately.
+
+---
+
+## ✅ Required Inputs
+
+Please ask the user to provide:
+
+1. 📓 Notebook Title and File Name  
+   - Example: `01-CreateDataset.ipynb`  
+   - What is the title of this notebook?
+
+2. 🔍 Purpose of the Notebook  
+   - A short, clear explanation of what this notebook does.
+
+3. 🧪 Context  
+   - Where does this notebook fit in the larger project or data pipeline?
+
+4. 🎯 Objectives  
+   - List 2–5 bullet points for what this notebook accomplishes.
+
+5. 🧱 Key Components  
+   - List the key classes, functions, or tools used. Include:
+     - Name
+     - Description
+     - Sample usage (optional)
+
+6. 🧭 Notebook Series Structure  
+   - Current notebook position (e.g., Notebook 1 of 5)
+   - Previous notebook title and link (if any)
+   - Next notebook title and link (if any)
+
+7. 📦 Dependencies  
+   - Python version (e.g., 3.9+)
+   - Libraries used
+   - Pip install command or requirements.txt (optional)
+
+8. 🛠️ Config & Setup  
+   - Path variables used (e.g., RAW_DATA_PATH)
+   - Sample `.env` variables or config.py values
+
+9. 📥 Inputs & Outputs  
+   - Input files/directories and brief description
+   - Output files/directories and brief description
+
+10. 📚 Resources  
+    - External documentation, dataset links, schemas, APIs
+
+11. 👥 Contributors  
+    - Name, role, and GitHub handle of each contributor
+
+---
+
+## 📋 Instructions to AI
+
+Once all the above data is collected, structure the output using the notebook markdown template provided.
+
+- Do not skip any section.
+- Use clean, valid markdown.
+- Use appropriate icons and formatting.
+- Start the output directly with the full markdown document.
+
+`
+
+# 📘 Notebook: {{notebook_filename}}  
+_**Part of the IPython Notebook Project Series**_
+
+*Focused on {{notebook_focus}}.*
+
+## 🧭 Table of Contents
+
+- 📘 [Overview & Navigation](#-overview--navigation)
+- 🧠 [Context & Purpose](#-context--purpose)
+- 🧩 [Main Components](#-main-components-in-this-notebook)
+- 🧭 [Notebook Series Structure](#-notebook-series-structure)
+- 📦 [Dependencies](#-dependencies)
+- 🛠️ [Config / Setup](#-config--setup)
+- 📥 [Inputs & Outputs](#-inputs--outputs)
+- 🧬 [Core Implementation](#-core--implementation)
+- 📚 [Resources](#-resources)
+- 👥 [Contributors](#-contributors)
+
+---
+
+## 🧪 Overview & Navigation
+
+This notebook is part of a multi-step data pipeline project.  
+It focuses on: **{{brief_method_or_task_description}}**
+
+---
+
+## 🧠 Context & Purpose
+
+**🔍 Purpose:**  
+{{notebook_goal}}
+
+**🎯 Objectives:**  
+- {{objective_1}}  
+- {{objective_2}}  
+- {{objective_3}}  
+
+**📘 Context:**  
+{{where_this_fits_in_pipeline}}
+
+---
+
+## 🧩 Main Components in This Notebook
+
+### `{{component_name}}`  
+> {{component_description}}
+
+{{Repeat for each class/function/component used}}
+
+---
+
+## 🧭 Notebook Series Structure
+
+| 🔢 Order | 📓 Notebook                                      | 📝 Description                      |
+|---------:|--------------------------------------------------|-------------------------------------|
+| 0        | [00-Zero-Notebook.ipynb](https://github.com/...) | Overview and navigation             |
+| 1>       | [01-Data-Loading.ipynb](https://github.com/...)  | Load and explore raw datasets       |
+| 2        | [02-Preprocessing.ipynb](https://github.com/...) | Data cleaning and transformation    |
+| 3        | [03-Modeling.ipynb](https://github.com/...)      | Model training and evaluation       |
+| 4        | [04-Evaluation.ipynb](https://github.com/...)    | Results analysis and interpretation |
+
+> ⏮ **Previous Notebook:** [{{prev_notebook_name}}]({{prev_notebook_link}})  
+> ⏭ **Next Notebook:** [{{next_notebook_name}}]({{next_notebook_link}})
+
+---
+
+## 📦 Dependencies
+
+- {{dependency_1}}  
+- {{dependency_2}}  
+- {{dependency_3}}
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🛠️ Config / Setup
+
+- Set data paths in `config.py`
+
+- Example `.env` variables:
+  ```env
+  RAW_DATA_PATH=./data/raw
+  PROCESSED_DATA_PATH=./data/processed
+
+   ```
+
+---
+
+## 📥 Inputs & Outputs
+
+**📥 Inputs:**  
+- `{{input_path}}`: {{input_description}}
+
+**📤 Outputs:**  
+- `{{output_path}}`: {{output_description}}
+
+---
+
+## 🧬 Core Implementation
+
+Below are the key classes and methods used in this notebook:
+
+### 🔹 `{{key_class_or_function}}`
+
+> {{function_responsibility}}
+
+```python
+{{example_code_snippet}}
+```
+
+---
+
+## 🤝 Contributors
+
+| 👤 Name        | 🧑‍💻 Role        | 📬 Github                                | Linkedin |
+|---------------|------------------|-------------------------------------------|---------|
+| Amr Muhamed   | Maintainer       | [alaamer12](https://github.com/alaamer12)    | [alaamer12](https://linkedin.com/in/alaamer12) |
+| Jane Doe      | Data Analyst     | [jandoe](https://linkedin.com/in/janedoe) | [jandoe](https://linkedin.com/in/janedoe) |
+
+---
+
+> ℹ️ ️**Icon Legend:**  
+> - 📘 = Introduction  
+> - 🗂️ = Project Structure  
+> - 📓 = Notebook  
+> - 🧰 = Dependencies & Setup  
+> - 🚀 = Getting Started  
+> - 📊 = Project Status  
+> - 📚 = Resources  
+> - 👥 = Contributors  
+> - 📝 = Documentation  
+
+© 2025 Amr Muhamed. Licensed under the MIT License.  
+Project repository: [GitHub](https://github.com/alaamer12/your-project)
+
+> ⏮ **Previous Notebook:** [{{prev_notebook_name}}]({{prev_notebook_link}})  
+> ⏭ **Next Notebook:** [{{next_notebook_name}}]({{next_notebook_link}})

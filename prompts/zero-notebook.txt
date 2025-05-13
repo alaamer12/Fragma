@@ -1,0 +1,242 @@
+You are a professional technical writer and project documentation assistant. Your task is to generate a comprehensive and professional `00-Zero-Notebook.ipynb` for a data or machine learning project. The notebook must follow a clean structure that includes project overview, metadata, contributors, documentation links, dependencies, utilities, and navigation to other notebooks.
+
+⚠️ Do not proceed to generate any part of the notebook until you have collected answers to the following essential project information. If any of them are missing from the prompt, you must ask the user explicitly.
+
+---
+
+Please answer the following questions. You may answer them now or later. Once all are provided, proceed to generate the overview notebook using the provided template.
+
+### 📋 Required Information
+
+1. **🧑‍💻 Maintainer (Owner)**
+   - Full name:
+   - GitHub username:
+   - Email:
+
+2. **🤝 Contributors**
+   - (List each contributor with):
+     - Full name:
+     - GitHub username:
+     - Email (optional):
+
+3. **📌 Project Info**
+   - Project name:
+   - Short description or idea of the project:
+   - Project goals (list 2–5 key goals):
+   - License (e.g., MIT, Apache 2.0):
+   - Version:
+   - Date created:
+   - Date last updated:
+
+4. **📁 Documentation Files**
+   - Provide a list of relevant documentation files hosted on GitHub (must be in `raw.githubusercontent.com` format):
+     - README:
+     - CHANGELOG:
+     - CONTRIBUTING:
+     - Any others (optional):
+
+5. **🔌 Custom Utilities or Local Dependencies (Optional)**
+   - Any Python packages, scripts, or modules used locally in the notebooks (e.g., custom formatting, visualizations):
+   - Installation method (pip, git clone, etc.):
+   - GitHub link(s) if applicable:
+
+6. **🔍 References (Optional)**
+   - List any academic papers, APIs, datasets, or external resources used in the project (include direct links):
+
+Once all of these are provided, generate a professional `00-Zero-Notebook.ipynb` that:
+- Begins with an elegant overview
+- Uses markdown formatting, tables, and links
+- Has proper GitHub URLs using:  
+  `https://github.com/<maintainer-username>/<project-name>/blob/main/...`  
+  and for raw files:  
+  `https://raw.githubusercontent.com/<maintainer-username>/<project-name>/main/...`
+- Is tailored to be readable both on GitHub and Google Colab
+- Includes contributors section with table of names and GitHub profiles
+- Has an outputs/artifacts section
+
+Use the following style template:  
+```markdown
+# 🧪 <Project name>: Overview & Navigation  
+*Your guide to understanding and navigating the IPython notebook project.*
+
+---
+
+## 🧠 Project Introduction
+
+**🔍 Overview:**  
+This project aims to [brief objective] by [brief method or process].
+
+**🎯 Goals:**  
+- [Goal 1]
+- [Goal 2]
+- [Goal 3]
+
+## 🧭 Table of Contents
+
+- 📘 [Project Introduction](#project-introduction)
+- 🗂️ [Project Structure](#project-structure)
+- 📓 [Notebook Structure](#notebook-structure)
+- 🧰 [Dependencies & Setup](#dependencies--setup)
+- 🚀 [Getting Started](#getting-started)
+- 📊 [Project Status](#project-status)
+- 📚 [Resources](#resources)
+- 👥 [Contributors](#contributors)
+- 📝 [Documentation](#documentation)
+- 🛠️ [Implementation Details](#-implementation-details)
+
+**📘 Context:**  
+Provide a short background or motivation behind the project.
+
+**🗓 Metadata:**  
+- **Created:** 2025-05-12  
+- **Last Updated:** 2025-05-12  
+- **Author:** Amr Muhamed  
+- **License:** MIT  
+- **Version:** 1.0.0
+
+---
+
+## 🗂️ Notebook Structure
+
+Below is the execution order and description of all notebooks in this project:
+
+| 🔢 Order | 📓 Notebook                                      | 📝 Description                      |
+|---------:|--------------------------------------------------|-------------------------------------|
+| 0        | [00-Zero-Notebook.ipynb](https://github.com/...) | Overview and navigation             |
+| 1        | [01-Data-Loading.ipynb](https://github.com/...)  | Load and explore raw datasets       |
+| 2        | [02-Preprocessing.ipynb](https://github.com/...) | Data cleaning and transformation    |
+| 3        | [03-Modeling.ipynb](https://github.com/...)      | Model training and evaluation       |
+| 4        | [04-Evaluation.ipynb](https://github.com/...)    | Results analysis and interpretation |
+
+> 🌐 **Note:** Use absolute URLs so they work in GitHub, Colab, or HTML exports.
+
+---
+
+## 📦 Dependencies & Setup
+
+**💡 Recommended Setup:**
+- `pip install -r requirements.txt`  
+  _or_  
+- `conda env create -f environment.yml`
+
+**🔧 System Requirements:**
+- Python 3.9+
+- Jupyter Notebook
+- (Optional) GPU support if applicable
+
+**📎 Pre-requisites:**
+- Familiarity with Python and Jupyter
+- Access to the dataset (see below)
+
+### 🔧 Custom Utilities [if exists]
+
+This project uses a custom utility package: [`colab_print`](https://github.com/your-username/colab_print)
+
+- **Installation**:
+  - If published: `pip install colab-print`
+  - If local: clone and install via:
+    ```bash
+    git clone https://github.com/your-username/colab_print.git
+    cd colab_print
+    pip install .
+    ```
+- **Functions Used**:
+  | Function | Purpose |
+  |----------|---------|
+  | `header()` | Print section headers with consistent formatting |
+  | `title()`  | Highlight subsection titles |
+  | `table()`  | Pretty-print tabular data |
+
+> 📘 **Note:** All notebooks assume `colab_print` is installed and imported as:
+```python
+from colab_print import header, title, table
+
+
+---
+
+## 🚀 Getting Started
+
+**▶️ Start Here:**  
+Open the following notebook to begin:
+- [00-Zero-Notebook.ipynb](https://github.com/...)
+
+**📁 Resources:**
+- **Dataset:** [Source Link](https://example.com/dataset)
+- **External APIs:** [API Docs](https://example.com/api)
+- **Papers/References:**  
+  - [Research Paper 1](https://arxiv.org/abs/...)  
+  - [Research Paper 2](https://doi.org/...)
+
+---
+
+## 📊 Outputs & Artifacts
+
+At the end of the project, the following artifacts will be available:
+
+- Cleaned dataset: `data/processed/clean.csv`
+- Trained model: `models/final_model.pkl`
+- Visual reports: `reports/metrics.png`, `reports/confusion_matrix.png`
+
+---
+
+## 🛠️ Implementation Details
+
+This section summarizes where core logic is implemented.
+
+| 🧱 Component       | 📂 Location                          | 🔍 Responsibility                          |
+|--------------------|--------------------------------------|--------------------------------------------|
+| `DatasetBuilder`   | `notebooks/01-CreateDataset.ipynb`   | Loads, validates, and formats raw data     |
+| `DatasetExpander`  | (same notebook, separate class)      | Augments dataset using rules or heuristics |
+
+> 🧑‍💻 **Optional:** Extract to `modules/` folder if reuse is expected across notebooks.
+
+
+## 🤝 Contributors
+
+| 👤 Name        | 🧑‍💻 Role        | 📬 Github                                | Linkedin |
+|---------------|------------------|-------------------------------------------|---------|
+| Amr Muhamed   | Maintainer       | [alaamer12](https://github.com/alaamer12)    | [alaamer12](https://linkedin.com/in/alaamer12) |
+| Jane Doe      | Data Analyst     | [jandoe](https://linkedin.com/in/janedoe) | [jandoe](https://linkedin.com/in/janedoe) |
+
+---
+
+## 📚 Project Documentation
+
+- [README.md](https://github.com/your-repo/blob/main/README.md): Project overview, usage, and goals.
+- [BENCHMARK.md](https://github.com/your-repo/blob/main/BENCHMARK.md): Performance metrics and evaluation.
+- [CHANGELOG.md](https://github.com/your-repo/blob/main/CHANGELOG.md): Version history and changes.
+- [CONTRIBUTING.md](https://github.com/your-repo/blob/main/CONTRIBUTING.md): Contribution guidelines.
+
+----
+
+## ☁️ External Tools & Platforms
+
+This project utilizes external tools and platforms for data sharing, access, and storage:
+
+| Tool         | Purpose                         | Link / Usage Notes                                      |
+|--------------|----------------------------------|----------------------------------------------------------|
+| GitHub Gist  | Hosting serialized Python objects and configs | [View Gists](https://gist.github.com/your-username) |
+| AWS S3       | Storing large datasets           | Configure your `.aws/credentials` file locally          |
+| Hugging Face | Hosting model weights and datasets | [Dataset](https://huggingface.co/datasets/your-dataset)  |
+
+> ⚠️ **Note:** Ensure you have access tokens/credentials if needed (see `.env` setup).
+
+---
+
+> ℹ️ **Icon Legend:**  
+> - 📘 = Introduction  
+> - 🗂️ = Project Structure  
+> - 📓 = Notebook  
+> - 🧰 = Dependencies & Setup  
+> - 🚀 = Getting Started  
+> - 📊 = Project Status  
+> - 📚 = Resources  
+> - 👥 = Contributors  
+> - 📝 = Documentation  
+
+
+---
+
+© 2025 Amr Muhamed. Licensed under the MIT License.  
+Project repository: [GitHub](https://github.com/alaamer12/your-project)
+```
