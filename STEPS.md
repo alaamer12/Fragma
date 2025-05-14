@@ -1,43 +1,58 @@
-# Fragment Detector Project Steps
+# 📋 Fragment Detector Project Steps
 
-## Data Preparation Phase
-- [x] Create reusable dataset
-    - [x] Ensure sets are representative and balanced
-- [x] Expand and prepare the dataset
-- [x] Preprocess the dataset
-  - [x] Implement preprocessing pipeline with metrics tracking
-  - [x] Add "Processed Text" column to dataset
-  - [x] Generate preprocessing metrics for analysis
+> ℹ️ **Icon Legend:**  
+> - 📘 = Introduction  
+> - 🗂️ = Project Structure  
+> - 📓 = Notebook  
+> - 🧰 = Dependencies & Setup  
+> - 🚀 = Getting Started  
+> - 📊 = Project Status  
+> - 📚 = Resources  
+> - 👥 = Contributors  
+> - 📝 = Documentation  
+> - ✅ = Completed Task
+> - ⏳ = In Progress Task
+> - 🔜 = Upcoming Task
+> - 🔬 = Research & Analysis
 
-## Model Development Phase
-- [ ] Feature Extraction & Engineering
-  - [ ] Convert text to numerical features/vectors
+## 🧪 Data Preparation Phase
+- [x] ✅ Create reusable dataset
+    - [x] ✅ Ensure sets are representative and balanced
+- [x] ✅ Expand and prepare the dataset
+- [x] ✅ Preprocess the dataset
+  - [x] ✅ Implement preprocessing pipeline with metrics tracking
+  - [x] ✅ Add "Processed Text" column to dataset
+  - [x] ✅ Generate preprocessing metrics for analysis
 
-- [ ] Dataset Splitting
-  - [ ] Split into train/validation/test sets (70/15/15 ratio)
-  - [ ] Consider stratified sampling if imbalanced classes
+## 🛠️ Model Development Phase
+- [ ] 🔜 Feature Extraction & Engineering
+  - [ ] 🔜 Convert text to numerical features/vectors
 
-- [ ] Model Selection & Training
-  - [ ] Evaluate traditional ML approaches:
-    - [ ] Naive Bayes
-    - [ ] SVM
-    - [ ] Random Forest
-  - [ ] Explore deep learning models if needed:
-    - [ ] LSTM/GRU networks
-    - [ ] CNN for text
+- [ ] 🔜 Dataset Splitting
+  - [ ] 🔜 Split into train/validation/test sets (70/15/15 ratio)
+  - [ ] 🔜 Consider stratified sampling if imbalanced classes
 
-- [ ] Hyperparameter Tuning
-  - [ ] Implement grid search or random search
-  - [ ] Use cross-validation for robust tuning
-  - [ ] Track and compare model variants
+- [ ] 🔜 Model Selection & Training
+  - [ ] 🔜 Evaluate traditional ML approaches:
+    - [ ] 🔬 Naive Bayes
+    - [ ] 🔬 SVM
+    - [ ] 🔬 Random Forest
+  - [ ] 🔜 Explore deep learning models if needed:
+    - [ ] 🔬 LSTM/GRU networks
+    - [ ] 🔬 CNN for text
 
-## Evaluation & Deployment Phase
-- [ ] Model Evaluation
-  - [ ] Determine appropriate metrics for fragment detection
-  - [ ] Perform error analysis
+- [ ] 🔜 Hyperparameter Tuning
+  - [ ] 🔜 Implement grid search or random search
+  - [ ] 🔜 Use cross-validation for robust tuning
+  - [ ] 🔜 Track and compare model variants
 
-- [ ] Model Deployment [Optional]
-  - [ ] Export the trained model
-  - [ ] Create inference pipeline
-  - [ ] Package code for reusability
-  - [ ] Document model behavior and limitations
+## 🚀 Evaluation & Deployment Phase
+- [ ] 🔜 Model Evaluation
+  - [ ] 🔜 Determine appropriate metrics for fragment detection
+  - [ ] 🔜 Perform error analysis
+
+- [ ] 🔜 Model Deployment [Optional]
+  - [ ] 🔜 Export the trained model
+  - [ ] 🔜 Create inference pipeline
+  - [ ] 🔜 Package code for reusability
+  - [ ] 🔜 Document model behavior and limitations

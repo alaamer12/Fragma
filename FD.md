@@ -1,19 +1,33 @@
-# Fragment Detector Dataset Creator
+# 🔍 Fragment Detector Dataset Creator
+
+> ℹ️ **Icon Legend:**  
+> - 📘 = Introduction  
+> - 🔄 = Transformation Rules  
+> - 🧩 = Fragment Extraction  
+> - ⚖️ = Dataset Balancing  
+> - 📋 = Examples  
+> - 🧰 = Dependencies & Setup  
+> - 🚀 = Usage  
+> - 🛡️ = Edge Cases  
+> - 🆕 = Recent Updates  
+> - 📝 = Documentation  
+
+## 📘 Introduction
 
 This tool processes sentences to create a dataset for fragment detection in an autocomplete application. It extracts meaningful fragments from input sentences and labels them as fragments or complete sentences.
 
-## Transformation Rules
+## 🔄 Transformation Rules
 
 The script applies the following transformation rules to each input sentence:
 
-### 1. Preprocessing
+### 1️⃣ Preprocessing
 
 - Removes the starting part: `<name> commented`
 - Removes the ending part: `on <date> on <platform>.`
 - Preserves text within quotation marks
 - Trims leading/trailing whitespaces
 
-### 2. Fragment Extraction
+### 2️⃣ 🧩 Fragment Extraction
 
 - **When commas are present**:
   - Splits the sentence at each comma
@@ -26,7 +40,7 @@ The script applies the following transformation rules to each input sentence:
   - Sets `is_fragment = False`
   - If no special character exists, keeps the entire text and sets `is_fragment = False`
 
-### 3. Dataset Balancing
+### 3️⃣ ⚖️ Dataset Balancing
 
 The script can balance the dataset based on the `is_fragment` column using two strategies:
 
@@ -42,7 +56,7 @@ The script can balance the dataset based on the `is_fragment` column using two s
   - Creates more natural and contextually relevant fragments
   - All generated fragments are marked with `is_fragment = True`
 
-#### SmartExpander Functionality
+#### 🧠 SmartExpander Functionality
 
 The `SmartExpander` class analyzes sentences for optimal split points based on linguistic cues:
 
@@ -74,23 +88,23 @@ The `SmartExpander` class analyzes sentences for optimal split points based on l
 
 ...
 
-### 4. Output
+### 4️⃣ 📊 Output
 
 The final output contains two columns:
 - `Sentence Fragment`: The extracted text portion
 - `is_fragment`: Boolean flag indicating whether the sentence is a fragment (True) or a complete sentence (False)
 
-## Features
+## ✨ Features
 
-- **Smart Sentence Splitting**: Intelligently splits sentences at natural linguistic breakpoints
-- **Pattern-based Adverb Detection**: Uses regex to identify adverbs dynamically without requiring an exhaustive list
-- **Progress Tracking**: Uses tqdm progress bars to provide visual feedback for long-running operations
-- **Detailed Logging**: Provides detailed information about the processing steps and dataset statistics
-- **Flexible Balancing**: Offers two strategies for balancing imbalanced datasets
+- **🧩 Smart Sentence Splitting**: Intelligently splits sentences at natural linguistic breakpoints
+- **🔍 Pattern-based Adverb Detection**: Uses regex to identify adverbs dynamically without requiring an exhaustive list
+- **📈 Progress Tracking**: Uses tqdm progress bars to provide visual feedback for long-running operations
+- **📋 Detailed Logging**: Provides detailed information about the processing steps and dataset statistics
+- **⚖️ Flexible Balancing**: Offers two strategies for balancing imbalanced datasets
 
-## Examples
+## 📋 Examples
 
-### Example 1: Sentence with no commas
+### 📝 Example 1: Sentence with no commas
 
 **Input:**
 ```
@@ -108,7 +122,7 @@ Raymond Stewart commented "Why isn't everyone talking about Daybreak? it breaks 
 |--------------------------------------------|-------------|
 | Why isn't everyone talking about Daybreak? | False       |
 
-### Example 2: Sentence with commas
+### 📝 Example 2: Sentence with commas
 
 **Input:**
 ```
@@ -129,7 +143,7 @@ Jane Doe commented "Coffee, tea, or juice, that is the question" on 2022-03-15 0
 | or juice             | True        |
 | that is the question | True        |
 
-### Example 3: Balancing with SmartExpander
+### 📝 Example 3: Balancing with SmartExpander
 
 **Input Non-Fragment:**
 ```
@@ -148,7 +162,7 @@ The graphics are breathtaking but the plot could be better.
 | The graphics are breathtaking. | True        |
 | But the plot could be better.  | True        |
 
-### Example 4: Regex-based Adverb Detection
+### 📝 Example 4: Regex-based Adverb Detection
 
 **Input Non-Fragment:**
 ```
@@ -167,9 +181,9 @@ The actor performed brilliantly despite the weak script.
 | The actor performed.                 | True        |
 | Brilliantly despite the weak script. | True        |
 
-## Usage
+## 🚀 Usage
 
-### Prerequisites
+### 🧰 Prerequisites
 
 - Python 3.6 or higher
 - Required packages: pandas, tqdm, argparse, re
@@ -179,7 +193,7 @@ Install dependencies:
 pip install pandas tqdm
 ```
 
-### Running the Script
+### 💻 Running the Script
 
 ```bash
 python fd_dataset_creator_script.py input_file.csv output_file.csv [--balance {reduce,expand}]
@@ -192,7 +206,7 @@ Where:
   - `reduce`: Reduce majority class instances
   - `expand`: Create new minority class instances using intelligent splitting
 
-## Edge Cases Handled
+## 🛡️ Edge Cases Handled
 
 - **Multiple commas**: Each comma-separated part becomes a new row with `is_fragment = True`
 - **No special characters**: If no `.`, `!`, or `?` is found, the entire text is kept with `is_fragment = False`
@@ -204,9 +218,9 @@ Where:
 - **Punctuation handling**: Added punctuation to fragments as needed to maintain proper sentence structure
 - **Dynamic adverb detection**: Captures adverbs through pattern matching rather than requiring an exhaustive list 
 
-## Recent Updates and Enhancements
+## 🆕 Recent Updates and Enhancements
 
-### System Components
+### 🗂️ System Components
 
 The Fragment Detector system now consists of four main components:
 
@@ -215,7 +229,7 @@ The Fragment Detector system now consists of four main components:
 3. **fd_dataset_creator_script.py** - Original script enhanced, now benefits from upstream preprocessing.
 4. **fd_ds_expander.py** - Script to expand datasets with linguistic features, also benefits from preprocessing.
 
-### New: NLP Preprocessing Pipeline (`preprocessor.py`)
+### 🧹 New: NLP Preprocessing Pipeline (`preprocessor.py`)
 
 Before any fragment extraction or feature analysis, raw input sentences are now processed through a dedicated NLP preprocessing pipeline defined in `preprocessor.py`. This ensures consistency and improves the quality of data fed into downstream components.
 
@@ -240,7 +254,7 @@ The pipeline includes the following configurable steps:
 
 The order of operations is designed to handle dependencies (e.g., lowercasing before stopword removal).
 
-### Enhanced Linguistic Pattern Recognition
+### 🔤 Enhanced Linguistic Pattern Recognition
 
 The SmartExpander functionality has been extended with additional linguistic patterns:
 
@@ -257,7 +271,7 @@ The SmartExpander functionality has been extended with additional linguistic pat
    - Example: In "Amr is playing football", it can split after "is" or at "playing"
    - This improves fragmentation of sentences with continuous verbs
 
-### Example 5: Enhanced Verb Pattern Recognition
+### 📝 Example 5: Enhanced Verb Pattern Recognition
 
 **Input Non-Fragment:**
 ```
@@ -276,7 +290,7 @@ Amr is playing football with his friends.
 | Amr is.                            | True        |
 | Playing football with his friends. | True        |
 
-### Feature Extraction Functionality (`fd_ds_expander.py`)
+### 📊 Feature Extraction Functionality (`fd_ds_expander.py`)
 
 The `fd_ds_expander.py` script adds linguistic feature columns to datasets after they have been preprocessed:
 
@@ -293,7 +307,7 @@ Adds 18 linguistic feature columns including:
 - **has_gerund** - Contains gerunds/present participles (words ending with -ing)
 - **has_auxiliary**, **has_fullstop**, **has_conjunction**, and many more
 
-### Code Organization Improvements
+### 🔧 Code Organization Improvements
 
 - Extracted common patterns and word lists to `fd_linguistic_features.py`.
 - Introduced `preprocessor.py` for standardized text cleaning.

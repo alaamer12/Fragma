@@ -1,16 +1,29 @@
-# Fragma: Fragment Detection for Autocomplete Optimization
+# 🧩 Fragma: Fragment Detection for Autocomplete Optimization
+
+> ℹ️ **Icon Legend:**  
+> - 📘 = Introduction  
+> - 🗂️ = Project Structure  
+> - 📓 = Notebook  
+> - 🧰 = Dependencies & Setup  
+> - 🚀 = Getting Started  
+> - 📊 = Project Status  
+> - 📚 = Resources  
+> - 👥 = Contributors  
+> - 📝 = Documentation  
+
+## 📘 Introduction
 
 Fragma is a specialized model designed to detect sentence fragments for optimizing autocomplete systems. By identifying and classifying text fragments, Fragma helps autocomplete models provide more contextually relevant suggestions.
 
-## Project Status
+## 📊 Project Status
 
 This project is currently in the **Model Development Phase**. We have completed the data preparation steps and are now moving to feature extraction and model development.
 
 - See [STEPS.md](STEPS.md) for detailed project progress and upcoming tasks.
 
-## Project Components
+## 🗂️ Project Components
 
-### 1. Fragment Detector Dataset Creator
+### 1. 🔍 Fragment Detector Dataset Creator
 
 The `fd_dataset_creator_script.py` is a preprocessing tool that builds the training dataset for Fragma. It extracts meaningful fragments from input sentences and labels them as fragments or complete sentences.
 
@@ -20,7 +33,7 @@ This component:
 - Balances the dataset for model training
 - Generates labeled fragment/non-fragment pairs
 
-### 2. Text Preprocessing Pipeline
+### 2. 🧹 Text Preprocessing Pipeline
 
 The `preprocessor.py` module provides a comprehensive NLP preprocessing pipeline with metrics tracking:
 
@@ -32,7 +45,7 @@ The `preprocessor.py` module provides a comprehensive NLP preprocessing pipeline
 - Detailed metrics collection for preprocessing steps
 - Platform-specific noise removal
 
-### 3. Fragma Model (Core)
+### 3. 🧠 Fragma Model (Core)
 
 The Fragma model leverages the processed dataset to learn patterns and characteristics of sentence fragments, enabling:
 - Real-time fragment detection in user input
@@ -40,7 +53,7 @@ The Fragma model leverages the processed dataset to learn patterns and character
 - Improved autocomplete relevance
 - Reduced suggestion latency
 
-## Documentation
+## 📝 Documentation
 
 For detailed information about the project:
 
@@ -48,9 +61,9 @@ For detailed information about the project:
 - [STEPS.md](STEPS.md) - Project roadmap with completed and upcoming tasks
 - Comprehensive docstrings in code files
 
-## Quick Start
+## 🚀 Quick Start
 
-### Prerequisites
+### 🧰 Prerequisites
 
 - Python 3.6 or higher
 - Required packages:
@@ -64,7 +77,7 @@ For detailed information about the project:
   contractions
   ```
 
-### Installation
+### ⚙️ Installation
 
 Install dependencies:
 ```bash
@@ -78,7 +91,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 ```
 
-### Dataset Creation
+### 📊 Dataset Creation
 
 To prepare training data for the Fragma model:
 
@@ -93,7 +106,7 @@ Where:
   - `reduce`: Reduce majority class instances
   - `expand`: Create new minority class instances using intelligent splitting 
 
-### Text Preprocessing
+### 🧹 Text Preprocessing
 
 To preprocess text data for model training:
 
@@ -110,6 +123,6 @@ processed_text = processed_df["Processed Text"]
 print(overall_metrics)
 ```
 
-## Contributing
+## 👥 Contributing
 
 Contributions are welcome! Please check the roadmap in [STEPS.md](STEPS.md) to see what areas need attention. 
